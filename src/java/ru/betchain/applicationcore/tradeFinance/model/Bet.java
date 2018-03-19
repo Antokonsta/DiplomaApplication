@@ -1,4 +1,4 @@
-package ru.betchain.applicationcore.matchCenter.model;
+package ru.betchain.applicationcore.tradeFinance.model;
 
 
 import javax.persistence.*;

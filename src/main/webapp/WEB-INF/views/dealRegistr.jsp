@@ -9,7 +9,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>Регистрация спора</title>
+    <title>Регистрация сделки торгового финансирования</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -41,20 +41,19 @@
 </head>
 <body>
 <div class="body">
-    <c:url var="addAction" value = "/betRegistr/add/${match.id}"/>
-    <form:form action="${addAction}" commandName="bet" class="sky-form">
+    <c:url var="addAction" value = "/dealRegistration/deploy"/>
+    <form:form action="${addAction}" commandName="deal" class="sky-form">
    <%-- <form action="${addAction}"  method="post" class="sky-form">--%>
-        <header>Регистрация спора</header>
-        <header><img src="${match.leftPic}" border="0" width="50" height="50">
-            ${match.left} : ${match.right}
-            <img src="${match.rightPic}" border="0" width="50" height="50"></header>
+        <header>Регистрация сделки</header>
+
         <fieldset>
             <div class="row">
                 <section class="col col-6">
+                    <label class="label">Данные инициатору</label>
                     <label class="textarea">
                         <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
                                                       height="20"></i>
-                        <form:textarea path="userInitiator" readonly="true" rows="1"/>
+                        <form:textarea path="userInitiator" rows="1"/>
                        <%-- <textarea readonly rows="1"
                                   placeholder="User">${pageContext.request.userPrincipal.name}</textarea>--%>
 
@@ -63,11 +62,12 @@
                     </label>
                 </section>
                 <section class="col col-6">
-                    <label class="textarea">
+                    <label class="toggle"><input type="checkbox" name="checkbox-toggle" checked><i></i>Импортер</label>
+                   <%-- <label class="textarea">
                         <i class="icon-prepend"> <img src='../../resources/img/calendrier.png' border="0" width="20"
                                                       height="20"></i>
                         <textarea readonly rows="1" placeholder="Date">${match.date}</textarea>
-                    </label>
+                    </label>--%>
                 </section>
             </div>
 
@@ -76,9 +76,8 @@
         <fieldset>
             <div class="row">
                 <section class="col col-6">
-                    <label class="label">Ставки на игру</label>
-                    <label class="toggle"><input type="checkbox" name="checkbox-toggle" checked><i></i>Тестовая
-                        валюта</label>
+                    <label class="label">Данные по сделке</label>
+
                 </section>
             </div>
             <div class="row">
@@ -87,15 +86,15 @@
                         <i class="icon-prepend"> <img src='../../resources/img/money.png' border="0" width="20"
                                                       height="20"></i>
                         <%--<input type="text" placeholder="Ставка">--%>
-                        <form:input path="priceOfInitiator"/>
+                        <form:input path="dealPrice"/>
                     </label>
                 </section>
                 <section class="col col-6">
                     <label class="select">
-                        <form:select path="initiatorWinner">
+                        <form:select path="selected">
                             <option value="0" selected disabled>Ставка на</option>
-                            <option value="left">${match.left} </option>
-                            <option value="right">${match.right} </option>
+                            <option value="left">1</option>
+                            <option value="right">2</option>
                             </form:select>
                                 <i></i>
                     </label>

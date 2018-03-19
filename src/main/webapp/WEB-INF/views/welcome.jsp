@@ -294,25 +294,19 @@
 
 </div>--%>
 
-<form id="logoutForm" method="POST" action="${contextPath}/logout">
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-</form>
+
 <nav role='navigation'>
     <ul>
-        <li><a href="<%--<c:url value='/addTask/${acc}'/>--%>">Создать спор</a></li>
-         <li><a href="#">Лига</a>
+        <li><a href="<c:url value='/welcome'/>">Главная</a></li>
+        <li><a href="<c:url value='/dealRegistration'/>">Создать сделку ТФ</a></li>
+        <li><a href="<%--<c:url value='/addTask/${acc}'/>--%>">Создать обязательства выплаты</a></li>
+        <li><a href="<%--<c:url value='/addTask/${acc}'/>--%>">Создать доставку</a></li>
+         <li><a href="#">Инфо по сделкам</a>
              <ul>
-                 <li><a href="">РФПЛ</a></li>
-                 <li><a href="">Англия</a></li>
-                 <li><a href="">Испания</a></li>
-                 <li><a href="">Лига чемпионов</a></li>
+                 <li><a href="">Показать связанные контракты</a></li>
+                 <li><a href="">TODO ЕЩЕ</a></li>
              </ul>
          </li>
-        <li><a href="" target="_blank">Мой профиль</a></li>
-        <li><a onclick="document.forms['logoutForm'].submit()">
-        </a>Выйти из ${pageContext.request.userPrincipal.name}</li>
-
-
     </ul>
 </nav>
 
@@ -321,120 +315,9 @@
 <br/>
 <br/>
 <br/>
-<h1><img src="https://img.championat.com/tournir/1497022072684428392.png" border="0" width="175" height="150"></h1>
+<br/>
 
-<table>
-    <tr>
-        <td>
-            <h3>Мои открытые споры в этой лиге</h3>
-            <table <%--class="tbl-content"--%>>
-                <tr class="tbl-header">
-                    <th width="20%">Дата</th>
-                    <th width="50%">Противостояние</th>
-                    <th width="30%">Ставка</th>
-                </tr>
-                <c:forEach items="${betMatchForUser}" var="betMatch">
-                    <tr>
-                            <td>${betMatch.match.date}</td>
-                            <td><a href="" class="ghost-button-semi-transparent">
-                                <img src="${betMatch.match.leftPic}" border="0" width="25" height="25">
-                                    ${betMatch.match.left} : ${betMatch.match.right}
-                                <img src="${betMatch.match.rightPic}" border="0" width="25" height="25"> </a></td>
-                        <td style="vertical-align: middle" >${betMatch.bet.priceOfInitiator} р. на <img src="${betMatch.winnerPic}" border="0" width="25" height="25"></td>
-                    </tr>
-
-                </c:forEach>
-                </table>
-
-        </td>
-        <td>
-            <h3>Все непринятые споры в этой лиге</h3>
-            <table <%--class="tbl-content"--%>>
-                <tr class="tbl-header">
-                    <th width="25%">Дата</th>
-                    <th width="50%">Противостояние</th>
-                    <th width="25%">Ставка</th>
-                </tr>
-                <tr>
-                    <td>12.95.16</td>
-                    <td>Манчестер - Ливерпуль</td>
-                    <td>Победа хозяев</td>
-                </tr><tr>
-                    <td>12.95.16</td>
-                    <td>Манчестер - Ливерпуль</td>
-                    <td>Победа хозяев</td>
-                </tr><tr>
-                    <td>12.95.16</td>
-                    <td>Манчестер - Ливерпуль</td>
-                    <td>Победа хозяев</td>
-                </tr><tr>
-                    <td>12.95.16</td>
-                    <td>Манчестер - Ливерпуль</td>
-                    <td>Победа хозяев</td>
-                </tr><tr>
-                    <td>12.95.16</td>
-                    <td>Манчестер - Ливерпуль</td>
-                    <td>Победа хозяев</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><a href="" class="ghost-button-semi-transparent">Показатать все</td>
-                    <td></td>
-                </tr>
-            </table>
-
-        </td>
-
-    </tr>
-    <tr>
-        <td>
-            <h2>Ближайшие матчи</h2>
-            <c:if test="${!empty listOfMatches}">
-                <table class="tbl-content">
-                    <tr class="tbl-header">
-                        <th width="30%">Дата</th>
-                        <th width="70%">Противостояние</th>
-                    </tr>
-                    <c:forEach items="${listOfMatches}" var="match">
-                        <tr>
-                            <c:if test="${!match.finished}">
-                                <td>${match.date}</td>
-                                <td><a href="<c:url value='/betRegistr/${pageContext.request.userPrincipal.name}/${match.id}'/>" class="ghost-button-semi-transparent">
-                                    <img src="${match.leftPic}" border="0" width="25" height="25">
-                                        ${match.left} : ${match.right}
-                                    <img src="${match.rightPic}" border="0" width="25" height="25"> </a></td>
-                            </c:if>
-
-                        </tr>
-
-                    </c:forEach>
-                </table>
-            </c:if>
-        </td>
-        <td>
-            <h2>Сыгранные матчи</h2>
-            <c:if test="${!empty listOfMatches}">
-                <table class="tbl-content">
-                    <tr class="tbl-header">
-                        <th width="30%">Дата</th>
-                        <th width="70%">Результат</th>
-                    </tr>
-                    <c:forEach items="${listOfMatches}" var="match">
-                        <tr >
-                            <c:if test="${match.finished}">
-                                <td>${match.date}</td>
-                                <td><a href="" class="ghost-button-semi-transparent-for-finished">
-                                    <img src="${match.leftPic}" border="0" width="25" height="25">
-                                      ${match.left} ${match.leftRes} : ${match.rightRes} ${match.right}
-                                    <img src="${match.rightPic}" border="0" width="25" height="25"> </a></td>
-                            </c:if>
-                        </tr>
-                    </c:forEach>
-                </table>
-            </c:if>
-        </td>
-    </tr>
-</table>
+ЗДЕСЬ ИНСТРУКЦИЯ КАК РАБОТАЕТ СИСТЕМА
 
 
 </body>

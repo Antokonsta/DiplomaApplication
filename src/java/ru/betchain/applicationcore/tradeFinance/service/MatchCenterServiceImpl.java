@@ -1,4 +1,4 @@
-package ru.betchain.applicationcore.matchCenter.service;
+package ru.betchain.applicationcore.tradeFinance.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -7,12 +7,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.betchain.applicationcore.login.dao.UserDao;
-import ru.betchain.applicationcore.matchCenter.dao.AllMatchesDao;
-import ru.betchain.applicationcore.matchCenter.dao.BetsDaoFromTable;
-import ru.betchain.applicationcore.matchCenter.model.Bet;
-import ru.betchain.applicationcore.matchCenter.model.BetMatchAssociation;
-import ru.betchain.applicationcore.matchCenter.model.Match;
+
+import ru.betchain.applicationcore.tradeFinance.dao.AllMatchesDao;
+import ru.betchain.applicationcore.tradeFinance.dao.BetsDaoFromTable;
+import ru.betchain.applicationcore.tradeFinance.model.Bet;
+import ru.betchain.applicationcore.tradeFinance.model.BetMatchAssociation;
+import ru.betchain.applicationcore.tradeFinance.model.Match;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,11 @@
-package ru.betchain.applicationcore.matchCenter.service;
+package ru.betchain.applicationcore.tradeFinance.service;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
-import ru.betchain.applicationcore.matchCenter.model.Match;
+import ru.betchain.applicationcore.tradeFinance.model.Match;
 
 import java.io.IOException;
 import java.util.ArrayList;

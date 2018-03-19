@@ -1,6 +1,6 @@
-package ru.betchain.applicationcore.matchCenter.dao;
+package ru.betchain.applicationcore.tradeFinance.dao;
 
-import ru.betchain.applicationcore.matchCenter.model.Bet;
+import ru.betchain.applicationcore.tradeFinance.model.Bet;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package ru.betchain.applicationcore.matchCenter.dao;
+package ru.betchain.applicationcore.tradeFinance.dao;
 
 /**
  * Created by Anton on 24.08.17.
@@ -6,7 +6,7 @@ package ru.betchain.applicationcore.matchCenter.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import ru.betchain.applicationcore.matchCenter.model.Match;
+import ru.betchain.applicationcore.tradeFinance.model.Match;
 
 public interface AllMatchesDao extends JpaRepository<Match, Long> {
     Match findById(String id);
