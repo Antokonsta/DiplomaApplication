@@ -1,24 +1,31 @@
 package ru.betchain.applicationcore.tradeFinance.model;
 
+
+
 public class Deal {
-    private String userInitiator;
-    private String selected;
+    private String initiatorWallet;
+    private Boolean initiatorImporter;
     private long dealPrice;
+    private String dealDate;
+    private String dealDesc;
+    private String importerBankWallet;
+    private String exporterBankWallet;
+    private String counterPartyWallet;
 
-    public String getUserInitiator() {
-        return userInitiator;
+    public String getInitiatorWallet() {
+        return initiatorWallet;
     }
 
-    public void setUserInitiator(String userInitiator) {
-        this.userInitiator = userInitiator;
+    public void setInitiatorWallet(String initiatorWallet) {
+        this.initiatorWallet = initiatorWallet;
     }
 
-    public String getSelected() {
-        return selected;
+    public Boolean getInitiatorImporter() {
+        return initiatorImporter;
     }
 
-    public void setSelected(String selected) {
-        this.selected = selected;
+    public void setInitiatorImporter(Boolean initiatorImporter) {
+        this.initiatorImporter = initiatorImporter;
     }
 
     public long getDealPrice() {
@@ -29,12 +36,57 @@ public class Deal {
         this.dealPrice = dealPrice;
     }
 
+    public String getDealDate() {
+        return dealDate;
+    }
+
+    public void setDealDate(String dealDate) {
+        this.dealDate = dealDate;
+    }
+
+    public String getDealDesc() {
+        return dealDesc;
+    }
+
+    public void setDealDesc(String dealDesc) {
+        this.dealDesc = dealDesc;
+    }
+
+    public String getImporterBankWallet() {
+        return importerBankWallet;
+    }
+
+    public void setImporterBankWallet(String importerBankWallet) {
+        this.importerBankWallet = importerBankWallet;
+    }
+
+    public String getExporterBankWallet() {
+        return exporterBankWallet;
+    }
+
+    public void setExporterBankWallet(String exporterBankWallet) {
+        this.exporterBankWallet = exporterBankWallet;
+    }
+
+    public String getCounterPartyWallet() {
+        return counterPartyWallet;
+    }
+
+    public void setCounterPartyWallet(String counterPartyWallet) {
+        this.counterPartyWallet = counterPartyWallet;
+    }
+
     @Override
     public String toString() {
         return "Deal{" +
-                "userInitiator='" + userInitiator + '\'' +
-                ", selected='" + selected + '\'' +
+                "initiatorWallet='" + initiatorWallet + '\'' +
+                ", initiatorImporter=" + initiatorImporter +
                 ", dealPrice=" + dealPrice +
+                ", dealDate='" + dealDate + '\'' +
+                ", dealDesc='" + dealDesc + '\'' +
+                ", importerBankWallet='" + importerBankWallet + '\'' +
+                ", exporterBankWallet='" + exporterBankWallet + '\'' +
+                ", counterPartyWallet='" + counterPartyWallet + '\'' +
                 '}';
     }
 }

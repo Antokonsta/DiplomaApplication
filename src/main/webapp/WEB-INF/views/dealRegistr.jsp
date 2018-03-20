@@ -5,6 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="calendar" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <html>
@@ -41,33 +42,38 @@
 </head>
 <body>
 <div class="body">
-    <c:url var="addAction" value = "/dealRegistration/deploy"/>
+    <c:url var="addAction" value="/dealRegistration/deploy"/>
     <form:form action="${addAction}" commandName="deal" class="sky-form">
-   <%-- <form action="${addAction}"  method="post" class="sky-form">--%>
+        <%-- <form action="${addAction}"  method="post" class="sky-form">--%>
         <header>Регистрация сделки</header>
 
         <fieldset>
             <div class="row">
                 <section class="col col-6">
-                    <label class="label">Данные инициатору</label>
+                    <label class="label">Данные инициатора</label>
+                </section>
+
+            </div>
+            <div class="row">
+                <section class="col col-6">
+                    <label class="label">Номер кошелька</label>
                     <label class="textarea">
                         <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
                                                       height="20"></i>
-                        <form:textarea path="userInitiator" rows="1"/>
-                       <%-- <textarea readonly rows="1"
-                                  placeholder="User">${pageContext.request.userPrincipal.name}</textarea>--%>
-
-
+                        <form:textarea path="initiatorWallet" rows="1"/>
 
                     </label>
                 </section>
                 <section class="col col-6">
-                    <label class="toggle"><input type="checkbox" name="checkbox-toggle" checked><i></i>Импортер</label>
-                   <%-- <label class="textarea">
-                        <i class="icon-prepend"> <img src='../../resources/img/calendrier.png' border="0" width="20"
-                                                      height="20"></i>
-                        <textarea readonly rows="1" placeholder="Date">${match.date}</textarea>
-                    </label>--%>
+                    <label class="label">Роль</label>
+                    <label class="select">
+                        <form:select path="initiatorImporter">
+                            <option value="0" selected disabled>Роль инициатора</option>
+                            <option value="true">Импортер</option>
+                            <option value="false">Экспортер</option>
+                        </form:select>
+                        <i></i>
+                    </label>
                 </section>
             </div>
 
@@ -82,21 +88,40 @@
             </div>
             <div class="row">
                 <section class="col col-6">
+                    <label class="label">Сумма сделки</label>
                     <label class="input">
                         <i class="icon-prepend"> <img src='../../resources/img/money.png' border="0" width="20"
                                                       height="20"></i>
-                        <%--<input type="text" placeholder="Ставка">--%>
                         <form:input path="dealPrice"/>
                     </label>
                 </section>
                 <section class="col col-6">
-                    <label class="select">
-                        <form:select path="selected">
-                            <option value="0" selected disabled>Ставка на</option>
-                            <option value="left">1</option>
-                            <option value="right">2</option>
-                            </form:select>
-                                <i></i>
+                    <label class="label">Дата заключения</label>
+                    <label class="textarea">
+                        <i class="icon-prepend"> <img src='../../resources/img/calendrier.png' border="0" width="20"
+                                                      height="20"></i>
+                        <form:textarea path="dealDate" rows="1"/>
+                    </label>
+                </section>
+            </div>
+
+            <div class="row">
+                <section class="col col-6">
+                    <label class="label">Подробное описание товара</label>
+                    <label class="textarea">
+                        <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
+                                                      height="20"></i>
+                        <form:textarea path="dealDesc" rows="1"/>
+
+                    </label>
+                </section>
+                <section class="col col-6">
+                    <label class="label">Кошелек Экспортера/Импортера</label>
+                    <label class="textarea">
+                        <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
+                                                      height="20"></i>
+                        <form:textarea path="counterPartyWallet" rows="1"/>
+
                     </label>
                 </section>
             </div>
@@ -104,28 +129,38 @@
         <fieldset>
             <div class="row">
                 <section class="col col-6">
-                    <label class="toggle"><input type="checkbox" name="checkbox-toggle" checked><i></i>Приватный спор</label>
+                    <label class="label">Остальные участники</label>
+
+                </section>
+            </div>
+            <div class="row">
+                <section class="col col-6">
+                    <label class="label">Кошелек Банка Импортера</label>
+                    <label class="textarea">
+                        <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
+                                                      height="20"></i>
+                        <form:textarea path="importerBankWallet" rows="1"/>
+
+                    </label>
                 </section>
                 <section class="col col-6">
-                    <label class="select">
-                        <select>
-                            <option value="0" selected disabled>Выберите друга</option>
-                            <option value="1">Леха</option>
-                            <option value="2">Тоха</option>
-                            <select>
-                                <i></i>
+                    <label class="label">Кошелек Банка Экспортера</label>
+                    <label class="textarea">
+                        <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
+                                                      height="20"></i>
+                        <form:textarea path="exporterBankWallet" rows="1"/>
+
                     </label>
                 </section>
             </div>
         </fieldset>
 
 
-
         <footer>
             <button type="submit" class="button">Создать</button>
             <button type="button" class="button button-secondary" onclick="window.history.back();">Назад</button>
         </footer>
-    <%--</form>--%>
+        <%--</form>--%>
     </form:form>
 
 </div>
