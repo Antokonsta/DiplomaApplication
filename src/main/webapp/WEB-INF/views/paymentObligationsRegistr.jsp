@@ -42,37 +42,28 @@
 </head>
 <body>
 <div class="body">
-    <c:url var="addAction" value="/dealRegistration/deploy"/>
-    <form:form action="${addAction}" commandName="deal" class="sky-form">
-        <%-- <form action="${addAction}"  method="post" class="sky-form">--%>
-        <header>Регистрация сделки</header>
+    <c:url var="addAction" value="/paymentRegistration/deploy"/>
+    <form:form action="${addAction}" commandName="paymentObligation" class="sky-form">
+        <header>Регистрация обязательств выплаты</header>
 
         <fieldset>
             <div class="row">
                 <section class="col col-6">
-                    <label class="label">Данные инициатора</label>
+                    <label class="label">Адрес контракта сделки ТФ</label>
                 </section>
 
             </div>
             <div class="row">
                 <section class="col col-6">
-                    <label class="label">Номер кошелька</label>
                     <label class="textarea">
                         <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
                                                       height="20"></i>
-                        <form:textarea path="initiatorWallet" rows="1"/>
+                        <form:textarea path="dealAddress" rows="1"/>
 
                     </label>
                 </section>
                 <section class="col col-6">
-                    <label class="label">Роль</label>
-                    <label class="select">
-                        <form:select path="initiatorImporter">
-                            <option value="0" selected disabled>Роль инициатора</option>
-                            <option value="true">Импортер</option>
-                            <option value="false">Экспортер</option>
-                        </form:select>
-                        <i></i>
+                    <label class="toggle"><input type="checkbox" name="checkbox-toggle" checked><i></i>Оплата через контракт</label>
                     </label>
                 </section>
             </div>
@@ -109,7 +100,7 @@
                 <section class="col col-6">
                     <label class="label">Подробное описание товара</label>
                     <label class="textarea">
-                        <i class="icon-prepend"> <img src='../../resources/img/tovar.png' border="0" width="20"
+                        <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
                                                       height="20"></i>
                         <form:textarea path="dealDesc" rows="1"/>
 

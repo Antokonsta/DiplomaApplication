@@ -44,7 +44,6 @@
             font-size: 18px;
             text-decoration: underline;
             color: #ffffff;
-            text-transform: uppercase;
             font-weight: 300;
             text-align: center;
             margin-bottom: 15px;
@@ -171,10 +170,10 @@
             display: block;
             padding: 30px 20px;
             color: #ffffff;
-            font-size: .9em;
+            font-size: 1.0em;
             letter-spacing: 1px;
             text-decoration: none;
-            text-transform: uppercase;
+            /*text-transform: uppercase;*/
         }
 
         nav ul ul {
@@ -299,7 +298,7 @@
     <ul>
         <li><a href="<c:url value='/welcome'/>">Главная</a></li>
         <li><a href="<c:url value='/dealRegistration'/>">Создать сделку ТФ</a></li>
-        <li><a href="<%--<c:url value='/addTask/${acc}'/>--%>">Создать обязательства выплаты</a></li>
+        <li><a href="<c:url value='/paymentObligationsRegistration'/>">Создать обязательства выплаты</a></li>
         <li><a href="<%--<c:url value='/addTask/${acc}'/>--%>">Создать доставку</a></li>
          <li><a href="#">Инфо по сделкам</a>
              <ul>
@@ -316,8 +315,11 @@
 <br/>
 <br/>
 <br/>
+<c:if test="${!empty contractAddress}">
+<h3>Контракт успешно создан: <bold>${contractAddress}</bold> . Пожалуйста сохраните его адрес</h3>
+</c:if>
+<br/>
 
-ЗДЕСЬ ИНСТРУКЦИЯ КАК РАБОТАЕТ СИСТЕМА
 
 
 </body>

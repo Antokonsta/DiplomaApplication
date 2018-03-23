@@ -120,6 +120,13 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- blockchain -->
+    <dependency>
+      <groupId>org.web3j</groupId>
+      <artifactId>core</artifactId>
+      <version>2.3.0</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>application-core</finalName>
