@@ -5,12 +5,9 @@ package ru.betchain.applicationcore.tradeFinance.model;
 public class PaymentObligation {
     private String dealAddress;
     private Boolean payThroughContract = true;
-    private long dealPrice;
-    private String dealDate;
-    private String dealDesc;
-    private String importerBankWallet;
-    private String exporterBankWallet;
-    private String counterPartyWallet;
+    private long obligationPrice;
+    private String startDate;
+    private String endDate;
 
     public String getDealAddress() {
         return dealAddress;
@@ -28,52 +25,28 @@ public class PaymentObligation {
         this.payThroughContract = payThroughContract;
     }
 
-    public long getDealPrice() {
-        return dealPrice;
+    public long getObligationPrice() {
+        return obligationPrice;
     }
 
-    public void setDealPrice(long dealPrice) {
-        this.dealPrice = dealPrice;
+    public void setObligationPrice(long obligationPrice) {
+        this.obligationPrice = obligationPrice;
     }
 
-    public String getDealDate() {
-        return dealDate;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setDealDate(String dealDate) {
-        this.dealDate = dealDate;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getDealDesc() {
-        return dealDesc;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setDealDesc(String dealDesc) {
-        this.dealDesc = dealDesc;
-    }
-
-    public String getImporterBankWallet() {
-        return importerBankWallet;
-    }
-
-    public void setImporterBankWallet(String importerBankWallet) {
-        this.importerBankWallet = importerBankWallet;
-    }
-
-    public String getExporterBankWallet() {
-        return exporterBankWallet;
-    }
-
-    public void setExporterBankWallet(String exporterBankWallet) {
-        this.exporterBankWallet = exporterBankWallet;
-    }
-
-    public String getCounterPartyWallet() {
-        return counterPartyWallet;
-    }
-
-    public void setCounterPartyWallet(String counterPartyWallet) {
-        this.counterPartyWallet = counterPartyWallet;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     @Override
@@ -81,12 +54,9 @@ public class PaymentObligation {
         return "PaymentObligation{" +
                 "dealAddress='" + dealAddress + '\'' +
                 ", payThroughContract=" + payThroughContract +
-                ", dealPrice=" + dealPrice +
-                ", dealDate='" + dealDate + '\'' +
-                ", dealDesc='" + dealDesc + '\'' +
-                ", importerBankWallet='" + importerBankWallet + '\'' +
-                ", exporterBankWallet='" + exporterBankWallet + '\'' +
-                ", counterPartyWallet='" + counterPartyWallet + '\'' +
+                ", obligationPrice=" + obligationPrice +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 '}';
     }
 }

@@ -73,74 +73,37 @@
         <fieldset>
             <div class="row">
                 <section class="col col-6">
-                    <label class="label">Данные по сделке</label>
+                    <label class="label">Сроки обязательства</label>
 
                 </section>
             </div>
             <div class="row">
-                <section class="col col-6">
-                    <label class="label">Сумма сделки</label>
-                    <label class="input">
-                        <i class="icon-prepend"> <img src='../../resources/img/money.png' border="0" width="20"
-                                                      height="20"></i>
-                        <form:input path="dealPrice"/>
-                    </label>
-                </section>
                 <section class="col col-6">
                     <label class="label">Дата заключения</label>
                     <label class="textarea">
                         <i class="icon-prepend"> <img src='../../resources/img/calendrier.png' border="0" width="20"
                                                       height="20"></i>
-                        <form:textarea path="dealDate" rows="1"/>
+                        <form:textarea path="startDate" rows="1"/>
                     </label>
                 </section>
+                <section class="col col-6">
+                    <label class="label">Подлежит оплате до</label>
+                    <label class="input">
+                        <i class="icon-prepend"> <img src='../../resources/img/calendrier.png' border="0" width="20"
+                                                      height="20"></i>
+                        <form:input path="endDate"/>
+                    </label>
+                </section>
+
             </div>
 
             <div class="row">
                 <section class="col col-6">
-                    <label class="label">Подробное описание товара</label>
-                    <label class="textarea">
-                        <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
+                    <label class="label">Сумма обязательства</label>
+                    <label class="input">
+                        <i class="icon-prepend"> <img src='../../resources/img/money.png' border="0" width="20"
                                                       height="20"></i>
-                        <form:textarea path="dealDesc" rows="1"/>
-
-                    </label>
-                </section>
-                <section class="col col-6">
-                    <label class="label">Кошелек Экспортера/Импортера</label>
-                    <label class="textarea">
-                        <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
-                                                      height="20"></i>
-                        <form:textarea path="counterPartyWallet" rows="1"/>
-
-                    </label>
-                </section>
-            </div>
-        </fieldset>
-        <fieldset>
-            <div class="row">
-                <section class="col col-6">
-                    <label class="label">Остальные участники</label>
-
-                </section>
-            </div>
-            <div class="row">
-                <section class="col col-6">
-                    <label class="label">Кошелек Банка Импортера</label>
-                    <label class="textarea">
-                        <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
-                                                      height="20"></i>
-                        <form:textarea path="importerBankWallet" rows="1"/>
-
-                    </label>
-                </section>
-                <section class="col col-6">
-                    <label class="label">Кошелек Банка Экспортера</label>
-                    <label class="textarea">
-                        <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
-                                                      height="20"></i>
-                        <form:textarea path="exporterBankWallet" rows="1"/>
-
+                        <form:input path="obligationPrice"/>
                     </label>
                 </section>
             </div>
