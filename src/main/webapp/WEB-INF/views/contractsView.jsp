@@ -300,12 +300,12 @@
         <li><a href="<c:url value='/dealRegistration'/>">Создать сделку ТФ</a></li>
         <li><a href="<c:url value='/paymentObligationsRegistration'/>">Создать обязательства выплаты</a></li>
         <li><a href="<%--<c:url value='/addTask/${acc}'/>--%>">Создать доставку</a></li>
-        <li><a href="#">Действие</a>
-            <ul>
-                <li><a href="<c:url value='/showContracts/null'/>">Показать связанные контракты</a></li>
-                <li><a href="">TODO ЕЩЕ</a></li>
-            </ul>
-        </li>
+         <li><a href="#">Действие</a>
+             <ul>
+                 <li><a href="<c:url value='/showContracts/null'/>">Показать связанные контракты</a></li>
+                 <li><a href="">TODO ЕЩЕ</a></li>
+             </ul>
+         </li>
     </ul>
 </nav>
 
@@ -315,9 +315,9 @@
 <br/>
 <br/>
 <br/>
-<c:if test="${!empty contractAddress}">
-<h3>Контракт успешно создан: <bold>${contractAddress}</bold> . Пожалуйста сохраните его адрес</h3>
-</c:if>
+
+<h3>Введите адрес вашего кошелька</h3>
+
 <br/>
 
 
