@@ -5,12 +5,16 @@ import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.web3j.abi.datatypes.Address;
+import org.web3j.abi.datatypes.Bool;
 import org.web3j.abi.datatypes.Utf8String;
 import org.web3j.abi.datatypes.generated.Uint256;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.http.HttpService;
+import ru.betchain.applicationcore.tradeFinance.ethereum.contracts.ObligationsContract;
+import ru.betchain.applicationcore.tradeFinance.ethereum.contracts.TfDealContract;
 import ru.betchain.applicationcore.tradeFinance.model.Deal;
+import ru.betchain.applicationcore.tradeFinance.model.PaymentObligation;
 
 
 import java.math.BigInteger;
@@ -36,13 +40,13 @@ public class EthereumDeployService {
 
 
     /**
-     * Deploy smart contract in ethereum blockchain
+     * Deploy tf deal smart contract in ethereum blockchain
      * <p>
      *
      * @param deal
      * @return contract address
      */
-    public String deploySmartContract(Deal deal) throws Exception {
+    public String deployDealSmartContract(Deal deal) throws Exception {
 
         /* Connection to ethereum client */
         Web3j web3 = getEthereumConnection();
@@ -72,7 +76,51 @@ public class EthereumDeployService {
         /* check contract compilation */
         Uint256 idOfDeployedContract = contract.getId().get();
         if (idOfDeployedContract == null)
-            throw new UnsupportedOperationException("error of compilation flight smart contract");
+            throw new UnsupportedOperationException("error of compilation TF deal smart contract");
+
+
+        /* return contract address */
+        return contract.getContractAddress();
+
+    }
+
+    /**
+     * Deploy payment obligation smart contract in ethereum blockchain
+     * <p>
+     *
+     * @param obligation
+     * @return contract address
+     */
+    public String deployObligationSmartContract(PaymentObligation obligation) throws Exception {
+
+        /* Connection to ethereum client */
+        Web3j web3 = getEthereumConnection();
+        /* Get credentials of main wallet */
+        Credentials credentials = credentialsInfo.getCredentials();
+
+        /* Read data for contract */
+        Uint256 id = new Uint256(new Random().nextInt(30000000));
+
+        Address dealAddress = new Address(obligation.getDealAddress());
+        Bool payThroughContract = new Bool(obligation.getPayThroughContract());
+
+
+        // payment info
+        Uint256 obligationPrice = new Uint256(obligation.getObligationPrice());
+        Utf8String startDate = new Utf8String(obligation.getStartDate());
+        Utf8String endDate = new Utf8String(obligation.getEndDate());
+
+
+        LOGGER.info("Start deploying payment obligation smart contract");
+        /* Deploy smart contract */
+        ObligationsContract contract = ObligationsContract.deploy(web3, credentials, GAS_PRICE, GAS_LIMIT, BigInteger.ZERO,
+                id, dealAddress, payThroughContract, obligationPrice, startDate, endDate).get();
+
+
+        /* check contract compilation */
+        Uint256 idOfDeployedContract = contract.getId().get();
+        if (idOfDeployedContract == null)
+            throw new UnsupportedOperationException("error of compilation payment obligation smart contract");
 
 
         /* return contract address */

@@ -35,7 +35,7 @@ public class DealsRegistrationController {
     )
     public String addTfDeal(@ModelAttribute("deal") Deal deal, Model model) throws Exception {
         LOGGER.info(deal.toString());
-        String contractAddr = ethereumDeployService.deploySmartContract(deal);
+        String contractAddr = ethereumDeployService.deployDealSmartContract(deal);
         //String contractAddr = "0x22cb10ae2fefe692de0f77433c79edcfdc0e47cc";
         LOGGER.info(contractAddr);
         model.addAttribute("contractAddress", contractAddr);

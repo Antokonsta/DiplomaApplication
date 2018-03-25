@@ -1,4 +1,4 @@
-package ru.betchain.applicationcore.tradeFinance.ethereum;
+package ru.betchain.applicationcore.tradeFinance.ethereum.contracts;
 
 import org.web3j.abi.FunctionEncoder;
 import org.web3j.abi.TypeReference;

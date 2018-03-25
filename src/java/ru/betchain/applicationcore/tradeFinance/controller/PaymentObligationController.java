@@ -38,8 +38,8 @@ public class PaymentObligationController {
     )
     public String addTfDeal(@ModelAttribute("deal") PaymentObligation payment, Model model) throws Exception {
         LOGGER.info(payment.toString());
-        //String contractAddr = ethereumDeployService.deploySmartContract(deal);
-        String contractAddr = "0x22cb10ae2fefe692de0f77433c79edcfdc0e47cc";
+        String contractAddr = ethereumDeployService.deployObligationSmartContract(payment);
+        //String contractAddr = "0x22cb10ae2fefe692de0f77433c79edcfdc0e47cc";
         LOGGER.info(contractAddr);
         model.addAttribute("contractAddress", contractAddr);
         return "welcome";
