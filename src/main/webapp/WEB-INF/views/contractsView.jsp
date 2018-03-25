@@ -319,6 +319,26 @@
 <h3>Введите адрес вашего кошелька</h3>
 
 <br/>
+<br/>
+<br/>
+
+
+<c:if test="${!empty contractsForWallet}">
+    <table  class="tbl-content">
+        <tr class="tbl-header">
+            <th width="160">Контракт</th>
+            <th width="80">Дата создания</th>
+        </tr>
+        <c:forEach items="${contractsForWallet}" var="contract">
+            <c:if test="${!empty contract.contractAddress}">
+            <tr>
+                <td><a href="" class="ghost-button-semi-transparent">${contract.contractAddress}</a></td>
+                <td>${contract.timeStamp}</td>
+            </tr>
+            </c:if>
+        </c:forEach>
+    </table>
+</c:if>
 
 
 

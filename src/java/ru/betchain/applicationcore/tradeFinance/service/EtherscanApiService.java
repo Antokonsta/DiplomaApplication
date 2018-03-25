@@ -37,6 +37,9 @@ public class EtherscanApiService {
             ObjectMapper mapper = new ObjectMapper();
             EtherscanContractResponse value = mapper.readValue(response.body().string(), EtherscanContractResponse.class);
             List<EtherscanContractResultResponse> result = value.getResult();
+            for (EtherscanContractResultResponse res : result) {
+                LOGGER.info("результат: " + res.toString());
+            }
             return result;
         } catch (IOException e) {
             LOGGER.error("ошибка получения списка контрактов", e);
