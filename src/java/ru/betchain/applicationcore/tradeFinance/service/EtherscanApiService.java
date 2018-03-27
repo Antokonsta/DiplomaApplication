@@ -9,6 +9,9 @@ import ru.betchain.applicationcore.tradeFinance.model.etherscan.EtherscanContrac
 import ru.betchain.applicationcore.tradeFinance.model.etherscan.EtherscanContractResultResponse;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -39,6 +42,10 @@ public class EtherscanApiService {
             List<EtherscanContractResultResponse> result = value.getResult();
             for (EtherscanContractResultResponse res : result) {
                 LOGGER.info("результат: " + res.toString());
+                String timeStamp = res.getTimeStamp();
+                Timestamp stamp = new Timestamp(Long.valueOf(timeStamp) * 1000);
+                Date d = new Date(stamp.getTime());
+                res.setTimeStamp(new SimpleDateFormat("dd-MM-YYYY").format(d));
             }
             return result;
         } catch (IOException e) {

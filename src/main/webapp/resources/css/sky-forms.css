@@ -1394,8 +1394,10 @@
 	width: 75%;
 }
 .sky-form .col-10 {
-	width: 83.33%;
+	width: 100%;
+	alignment: center;
 }
+
 @media screen and (max-width: 600px) {
 	.sky-form .col {
 		float: none;

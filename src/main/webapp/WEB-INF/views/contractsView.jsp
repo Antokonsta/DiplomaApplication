@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
@@ -12,6 +13,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <link rel="stylesheet" href="../../resources/css/demo.css">
+    <link rel="stylesheet" href="../../resources/css/sky-forms.css">
+    <link rel="stylesheet" href="../../resources/css/sky-forms-purple.css">
 
     <title>Торговое финансирование</title>
 
@@ -279,19 +284,6 @@
 </head>
 <body>
 
-<%--<div class="container">
-
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-        <form id="logoutForm" method="POST" action="${contextPath}/logout">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form>
-
-        <h1>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a>
-        </h1>
-
-    </c:if>
-
-</div>--%>
 
 
 <nav role='navigation'>
@@ -316,7 +308,31 @@
 <br/>
 <br/>
 
-<h3>Введите адрес вашего кошелька</h3>
+
+<div class="body">
+    <c:url var="addAction" value="/showContractResult"/>
+    <form:form action="${addAction}" commandName="walletAddr" class="sky-form">
+
+    <header>Введите адрес вашего кошелька</header>
+
+    <fieldset>
+        <div class="row">
+            <section class="col col-10">
+                <label class="textarea">
+                    <form:textarea path="walletAddress" rows="1"/>
+                </label>
+            </section>
+        </div>
+    </fieldset>
+
+
+
+    <footer>
+        <button type="submit" class="button">Найти</button>
+    </footer>
+        <%--</form>--%>
+    </form:form>
+</div>
 
 <br/>
 <br/>
@@ -332,7 +348,8 @@
         <c:forEach items="${contractsForWallet}" var="contract">
             <c:if test="${!empty contract.contractAddress}">
             <tr>
-                <td><a href="" class="ghost-button-semi-transparent">${contract.contractAddress}</a></td>
+                <td><a href="https://ropsten.etherscan.io/address/${contract.contractAddress}"
+                       class="ghost-button-semi-transparent">${contract.contractAddress}</a></td>
                 <td>${contract.timeStamp}</td>
             </tr>
             </c:if>
