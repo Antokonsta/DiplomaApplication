@@ -36,7 +36,7 @@ public class PaymentObligationController {
             value = {"/paymentRegistration/deploy"},
             method = {RequestMethod.POST}
     )
-    public String addTfDeal(@ModelAttribute("deal") PaymentObligation payment, Model model) throws Exception {
+    public String addTfDeal(@ModelAttribute("paymentObligation") PaymentObligation payment, Model model) throws Exception {
         LOGGER.info(payment.toString());
         String contractAddr = ethereumDeployService.deployObligationSmartContract(payment);
         //String contractAddr = "0x22cb10ae2fefe692de0f77433c79edcfdc0e47cc";

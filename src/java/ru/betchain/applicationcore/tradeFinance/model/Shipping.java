@@ -4,10 +4,11 @@ package ru.betchain.applicationcore.tradeFinance.model;
 
 public class Shipping {
     private String paymentAddress;
-    private Boolean payThroughContract = true;
-    private long obligationPrice;
     private String startDate;
-    private String endDate;
+    private boolean partyImporter;
+    private boolean counterPartyImporter;
+    private String partyAddress;
+    private String counterPartyAddress;
 
     public String getPaymentAddress() {
         return paymentAddress;
@@ -15,22 +16,6 @@ public class Shipping {
 
     public void setPaymentAddress(String paymentAddress) {
         this.paymentAddress = paymentAddress;
-    }
-
-    public Boolean getPayThroughContract() {
-        return payThroughContract;
-    }
-
-    public void setPayThroughContract(Boolean payThroughContract) {
-        this.payThroughContract = payThroughContract;
-    }
-
-    public long getObligationPrice() {
-        return obligationPrice;
-    }
-
-    public void setObligationPrice(long obligationPrice) {
-        this.obligationPrice = obligationPrice;
     }
 
     public String getStartDate() {
@@ -41,13 +26,47 @@ public class Shipping {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
-        return endDate;
+    public boolean isPartyImporter() {
+        return partyImporter;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setPartyImporter(boolean partyImporter) {
+        this.partyImporter = partyImporter;
     }
 
+    public String getPartyAddress() {
+        return partyAddress;
+    }
 
+    public void setPartyAddress(String partyAddress) {
+        this.partyAddress = partyAddress;
+    }
+
+    public String getCounterPartyAddress() {
+        return counterPartyAddress;
+    }
+
+    public void setCounterPartyAddress(String counterPartyAddress) {
+        this.counterPartyAddress = counterPartyAddress;
+    }
+
+    public boolean isCounterPartyImporter() {
+        return counterPartyImporter;
+    }
+
+    public void setCounterPartyImporter(boolean counterPartyImporter) {
+        this.counterPartyImporter = counterPartyImporter;
+    }
+
+    @Override
+    public String toString() {
+        return "Shipping{" +
+                "paymentAddress='" + paymentAddress + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", partyImporter=" + partyImporter +
+                ", counterPartyImporter=" + counterPartyImporter +
+                ", partyAddress='" + partyAddress + '\'' +
+                ", counterPartyAddress='" + counterPartyAddress + '\'' +
+                '}';
+    }
 }

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../../resources/css/demo.css">
     <link rel="stylesheet" href="../../resources/css/sky-forms.css">
     <link rel="stylesheet" href="../../resources/css/sky-forms-purple.css">
-    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 
 
     <style type="text/css">
@@ -77,9 +77,51 @@
                     <label class="label">Участиники доставки</label>
                 </section>
             </div>
+        </fieldset>
+        <fieldset>
+            <div class="row">
+                <section class="col col-6">
+                    <label class="label">Адрес кошелька</label>
+                    <label class="textarea">
+                        <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
+                                                      height="20"></i>
+                        <form:textarea path="partyAddress" rows="1"/>
 
+                    </label>
+                </section>
+                <section class="col col-6">
+                    <label class="label">Принимающая сторона</label>
+                    <label class="select">
+                        <form:select path="partyImporter">
+                            <option value="true">Импортера</option>
+                            <option value="false">Экспортера</option>
+                        </form:select>
+                        <i></i>
+                    </label>
+                </section>
+            </div>
+        </fieldset>
 
+        <fieldset>
+            <div class="row">
+                <section class="col col-6">
+                    <label class="textarea">
+                        <i class="icon-prepend"> <img src='../../resources/img/images.png' border="0" width="20"
+                                                      height="20"></i>
+                        <form:textarea path="counterPartyAddress" rows="1"/>
 
+                    </label>
+                </section>
+                <section class="col col-6">
+                    <label class="select">
+                        <form:select path="counterPartyImporter">
+                            <option value="true">Импортера</option>
+                            <option value="false">Экспортера</option>
+                        </form:select>
+                        <i></i>
+                    </label>
+                </section>
+            </div>
         </fieldset>
 
 
