@@ -299,7 +299,7 @@
         <li><a href="<c:url value='/welcome'/>">Главная</a></li>
         <li><a href="<c:url value='/dealRegistration'/>">Создать сделку ТФ</a></li>
         <li><a href="<c:url value='/paymentObligationsRegistration'/>">Создать обязательства выплаты</a></li>
-        <li><a href="<%--<c:url value='/addTask/${acc}'/>--%>">Создать доставку</a></li>
+        <li><a href="<c:url value='/shippingRegistr'/>">Создать доставку</a></li>
         <li><a href="#">Действие</a>
             <ul>
                 <li><a href="<c:url value='/showContracts/null'/>">Показать связанные контракты</a></li>
