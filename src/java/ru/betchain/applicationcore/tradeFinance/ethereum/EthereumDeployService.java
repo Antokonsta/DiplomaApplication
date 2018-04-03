@@ -12,9 +12,11 @@ import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.http.HttpService;
 import ru.betchain.applicationcore.tradeFinance.ethereum.contracts.ObligationsContract;
+import ru.betchain.applicationcore.tradeFinance.ethereum.contracts.ShippingContract;
 import ru.betchain.applicationcore.tradeFinance.ethereum.contracts.TfDealContract;
 import ru.betchain.applicationcore.tradeFinance.model.Deal;
 import ru.betchain.applicationcore.tradeFinance.model.PaymentObligation;
+import ru.betchain.applicationcore.tradeFinance.model.Shipping;
 
 
 import java.math.BigInteger;
@@ -121,6 +123,50 @@ public class EthereumDeployService {
         Uint256 idOfDeployedContract = contract.getId().get();
         if (idOfDeployedContract == null)
             throw new UnsupportedOperationException("error of compilation payment obligation smart contract");
+
+
+        /* return contract address */
+        return contract.getContractAddress();
+
+    }
+
+    /**
+     * Deploy payment obligation smart contract in ethereum blockchain
+     * <p>
+     *
+     * @param shipping
+     * @return contract address
+     */
+    public String deployShippingSmartContract(Shipping shipping) throws Exception {
+
+        /* Connection to ethereum client */
+        Web3j web3 = getEthereumConnection();
+        /* Get credentials of main wallet */
+        Credentials credentials = credentialsInfo.getCredentials();
+
+        /* Read data for contract */
+        Uint256 id = new Uint256(new Random().nextInt(30000000));
+        Address paymentAddress = new Address(shipping.getPaymentAddress());
+        Address importerShipper = new Address(shipping.isPartyImporter()
+                ? shipping.getPartyAddress()
+                : shipping.getCounterPartyAddress());
+        Address exporterShipper = new Address(shipping.isCounterPartyImporter()
+                ? shipping.getPartyAddress()
+                : shipping.getCounterPartyAddress());
+
+        Utf8String startDate = new Utf8String(shipping.getStartDate());
+
+
+        LOGGER.info("Start deploying shipping smart contract");
+        /* Deploy smart contract */
+        ShippingContract contract = ShippingContract.deploy(web3, credentials, GAS_PRICE, GAS_LIMIT, BigInteger.ZERO,
+                id, paymentAddress,exporterShipper, importerShipper,startDate).get();
+
+
+        /* check contract compilation */
+        Uint256 idOfDeployedContract = contract.getId().get();
+        if (idOfDeployedContract == null)
+            throw new UnsupportedOperationException("error of compilation shipping smart contract");
 
 
         /* return contract address */

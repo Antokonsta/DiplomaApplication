@@ -41,8 +41,8 @@ public class ShippingController {
     )
     public String addTfDeal(@ModelAttribute("shipping") Shipping shipping, Model model) throws Exception {
         LOGGER.info(shipping.toString());
-     //   String contractAddr = ethereumDeployService.deployObligationSmartContract(payment);
-        String contractAddr = "0x22cb10ae2fefe692de0f77433c79edcfdc0e47cc";
+       String contractAddr = ethereumDeployService.deployShippingSmartContract(shipping);
+      //  String contractAddr = "0x22cb10ae2fefe692de0f77433c79edcfdc0e47cc";
         LOGGER.info(contractAddr);
         model.addAttribute("contractAddress", contractAddr);
         return "welcome";

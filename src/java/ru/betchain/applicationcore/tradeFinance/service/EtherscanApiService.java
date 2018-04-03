@@ -27,7 +27,7 @@ public class EtherscanApiService {
     public List<EtherscanContractResultResponse> getContractsForWallet(String wallet) {
         StringBuilder finalUrl = new StringBuilder(URL);
         finalUrl.append(wallet);
-        finalUrl.append("&startblock=0&endblock=99999999&sort=asc&apikey=YourApiKeyToken");
+        finalUrl.append("&startblock=0&endblock=99999999&sort=desc&apikey=YourApiKeyToken");
 
         LOGGER.info("make a request to etherscan API :" + finalUrl.toString());
 
